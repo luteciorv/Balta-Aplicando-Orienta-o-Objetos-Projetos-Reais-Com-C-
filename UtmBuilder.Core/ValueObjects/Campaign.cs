@@ -1,4 +1,6 @@
-﻿namespace UtmBuilder.Core.ValueObjects;
+﻿using UtmBuilder.Core.ValueObjects.Exceptions;
+
+namespace UtmBuilder.Core.ValueObjects;
 
 public class Campaign : ValueObject
 {
@@ -11,6 +13,10 @@ public class Campaign : ValueObject
         Id = id;
         Term = term;
         Content = content;
+
+        InvalidCampaignException.ThrowIfNull(Source, "O campo 'Source' está vazio");
+        InvalidCampaignException.ThrowIfNull(Medium, "O campo 'Medium' está vazio");
+        InvalidCampaignException.ThrowIfNull(Name, "O campo 'Name' está vazio");
     }
 
     public string? Id { get; set; }

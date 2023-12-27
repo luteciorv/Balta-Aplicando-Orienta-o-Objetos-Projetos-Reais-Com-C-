@@ -5,9 +5,10 @@ namespace UtmBuilder.Core.ValueObjects.Exceptions;
 
 public partial class InvalidUrlException : Exception
 {
+    private const string DefaultErrorMessage = "Formato da Url inválido";
     private const string UrlRegexPattern = @"^(http|https):\/\/[^\s\/$.?#].[^\s]*$";
 
-    public InvalidUrlException(string message = "Formato da Url inválido") : base(message)
+    public InvalidUrlException(string message = DefaultErrorMessage) : base(message)
     { }
 
     public static void ThrowIfInvalid(string address)
