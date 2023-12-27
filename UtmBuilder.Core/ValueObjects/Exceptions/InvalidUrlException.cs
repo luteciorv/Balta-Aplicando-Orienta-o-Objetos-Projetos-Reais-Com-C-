@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace UtmBuilder.Core.ValueObjects.Exceptions;
 
-public class InvalidUrlException : Exception
+public partial class InvalidUrlException : Exception
 {
     private const string UrlRegexPattern = @"^(http|https):\/\/[^\s\/$.?#].[^\s]*$";
 
@@ -15,7 +15,10 @@ public class InvalidUrlException : Exception
         if(string.IsNullOrEmpty(address))
             throw new InvalidUrlException("Url vazia");
 
-        if (!Regex.IsMatch(address, UrlRegexPattern))
+        if (!UrlRegex().IsMatch(address))
             throw new InvalidUrlException();
     }
+
+    [GeneratedRegex(UrlRegexPattern)]
+    private static partial Regex UrlRegex();
 }
