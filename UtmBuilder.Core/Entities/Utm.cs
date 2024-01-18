@@ -32,7 +32,7 @@ public class Utm
 
         var source = pars.Where(p => p.StartsWith("utm_source")).FirstOrDefault("").Split("=")[1]; 
         var medium = pars.Where(p => p.StartsWith("utm_medium")).FirstOrDefault("").Split("=")[1];
-        var name = pars.Where(p => p.StartsWith("utm_name")).FirstOrDefault("").Split("=")[1];  
+        var name = pars.Where(p => p.StartsWith("utm_campaign")).FirstOrDefault("").Split("=")[1];  
         
         var id = pars.Where(p => p.StartsWith("utm_id")).FirstOrDefault("").Split("=")[1];  
         var term = pars.Where(p => p.StartsWith("utm_term")).FirstOrDefault("").Split("=")[1];  
